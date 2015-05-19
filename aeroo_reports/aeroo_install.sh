@@ -4,7 +4,7 @@ sudo apt-get install git -y
 
 # Install AerooLib:
 echo -e "\n---- Install AerooLib ----"
-sudo apt-get install python-setuptools python-genshi python-cairo python-lxml libreoffice-script-provider-python -y
+sudo apt-get install python-setuptools python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-java-common -y
 sudo mkdir /opt/aeroo
 cd /opt/aeroo
 sudo git clone https://github.com/aeroo/aeroolib.git
@@ -15,6 +15,15 @@ sudo python setup.py install
 echo -e "\n---- create init script for LibreOffice (Headless Mode) ----"
 
 sudo touch /etc/init.d/office
+echo '### BEGIN INIT INFO' >> /etc/init.d/office
+echo '# Provides:          office' >> /etc/init.d/office
+echo '# Required-Start:    $remote_fs $syslog' >> /etc/init.d/office
+echo '# Required-Stop:     $remote_fs $syslog' >> /etc/init.d/office
+echo '# Default-Start:     2 3 4 5' >> /etc/init.d/office
+echo '# Default-Stop:      0 1 6' >> /etc/init.d/office
+echo '# Short-Description: Start daemon at boot time' >> /etc/init.d/office
+echo '# Description:       Enable service provided by daemon.' >> /etc/init.d/office
+echo '### END INIT INFO' >> /etc/init.d/office
 echo '#!/bin/sh' >> /etc/init.d/office
 echo '/usr/bin/soffice --nologo --nofirststartwizard --headless --norestore --invisible "--accept=socket,host=localhost,port=8100,tcpNoDelay=1;urp;" &' >> /etc/init.d/office
 
@@ -40,6 +49,7 @@ sudo apt-get install python3-pip -y
 sudo pip3 install jsonrpc2 daemonize
 cd /opt/aeroo
 sudo git clone https://github.com/aeroo/aeroo_docs.git
+sudo touch /etc/init.d/office
 sudo python3 /opt/aeroo/aeroo_docs/aeroo-docs start -c /etc/aeroo-docs.conf
 sudo ln -s /opt/aeroo/aeroo_docs/aeroo-docs /etc/init.d/aeroo-docs
 sudo update-rc.d aeroo-docs defaults
