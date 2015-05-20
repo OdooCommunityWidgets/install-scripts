@@ -4,7 +4,7 @@ sudo apt-get install git -y
 
 # Install AerooLib:
 echo -e "\n---- Install AerooLib ----"
-sudo apt-get install python-setuptools python-genshi python-cairo python-lxml libreoffice-base libreoffice-java libreoffice-script-provider-python libreoffice-java-common -y
+sudo apt-get install python-setuptools python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-base -y
 sudo mkdir /opt/aeroo
 cd /opt/aeroo
 sudo git clone https://github.com/aeroo/aeroolib.git
@@ -15,6 +15,7 @@ sudo python setup.py install
 echo -e "\n---- create init script for LibreOffice (Headless Mode) ----"
 
 sudo touch /etc/init.d/office
+sudo su
 echo '### BEGIN INIT INFO' >> /etc/init.d/office
 echo '# Provides:          office' >> /etc/init.d/office
 echo '# Required-Start:    $remote_fs $syslog' >> /etc/init.d/office
@@ -58,11 +59,11 @@ sudo service aeroo-docs start
 # [ ! ]  If you encounter and error "Unable to lock on the pidfile while trying #16 just restart your server (sudo shutdown -r now)                         and try #16 again after reboot.
 
 # Install Odoo from Source:
-# echo -e "\n---- Install Odoo from Source ----"
+echo -e "\n---- Install Odoo from Source ----"
 
-# cd /tmp
-# sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
-# sudo sh odoo_install.sh
+cd /tmp
+sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
+sudo sh odoo_install.sh
 
 # restart the server (sudo shutdown -r now)
 
