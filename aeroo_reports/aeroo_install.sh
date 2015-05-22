@@ -14,36 +14,24 @@ sudo python setup.py install
 #Create Init Script for OpenOffice (Headless Mode) - (see: https://www.odoo.com/forum/help-1/question/how-to-install-aeroo-reports-2780 for original post from Ahmet):
 echo -e "\n---- create init script for LibreOffice (Headless Mode) ----"
 
-sudo touch /etc/init.d/office
-sudo su
-echo '### BEGIN INIT INFO' >> /etc/init.d/office
-echo '# Provides:          office' >> /etc/init.d/office
-echo '# Required-Start:    $remote_fs $syslog' >> /etc/init.d/office
-echo '# Required-Stop:     $remote_fs $syslog' >> /etc/init.d/office
-echo '# Default-Start:     2 3 4 5' >> /etc/init.d/office
-echo '# Default-Stop:      0 1 6' >> /etc/init.d/office
-echo '# Short-Description: Start daemon at boot time' >> /etc/init.d/office
-echo '# Description:       Enable service provided by daemon.' >> /etc/init.d/office
-echo '### END INIT INFO' >> /etc/init.d/office
-echo '#!/bin/sh' >> /etc/init.d/office
-echo '/usr/bin/soffice --nologo --nofirststartwizard --headless --norestore --invisible "--accept=socket,host=localhost,port=8100,tcpNoDelay=1;urp;" &' >> /etc/init.d/office
+sudo su root -c "echo '### BEGIN INIT INFO' >> /etc/init.d/office"
+sudo su root -c "echo '# Provides:          office' >> /etc/init.d/office"
+sudo su root -c "echo '# Required-Start:    $remote_fs $syslog' >> /etc/init.d/office"
+sudo su root -c "echo '# Required-Stop:     $remote_fs $syslog' >> /etc/init.d/office"
+sudo su root -c "echo '# Default-Start:     2 3 4 5' >> /etc/init.d/office"
+sudo su root -c "echo '# Default-Stop:      0 1 6' >> /etc/init.d/office"
+sudo su root -c "echo '# Short-Description: Start daemon at boot time' >> /etc/init.d/office"
+sudo su root -c "echo '# Description:       Enable service provided by daemon.' >> /etc/init.d/office"
+sudo su root -c "echo '### END INIT INFO' >> /etc/init.d/office"
+sudo su root -c "echo '#!/bin/sh' >> /etc/init.d/office"
+sudo su root -c "echo '/usr/bin/soffice --nologo --nofirststartwizard --headless --norestore --invisible "--accept=socket,host=localhost,port=8100,tcpNoDelay=1;urp;" &' >> /etc/init.d/office"
 
 # Setup Permissions and test LibreOffice Headless mode connection
 
-sudo chmod +x /etc/init.d/office
-sudo update-rc.d office defaults
-sudo /etc/init.d/office
-telnet localhost 8100
+# sudo chmod +x /etc/init.d/office
+# sudo update-rc.d office defaults
 
-#15        You should see something like the following message (this means it has established a connection successfully):
-
-echo -e "\n---- Above this text you should see something like the following: ----"
-echo -e "\n---- Trying 127.0.0.1... ----"
-echo -e "\n---- Connected to localhost. ----"
-echo -e "\n---- Escape character is '^]'. ----"
-echo -e "\n---- e--'com.sun.star.bridge.XProtocolPropertiesUrpProtocolProperties.UrpProtocolPropertiesTidE--L ----"
-
-# Install AerooDOCS (see: https://github.com/aeroo/aeroo_docs/wiki/Installation-example-for-Ubuntu-14.04-LTS for original post):
+# Install AerooDOCS
 echo -e "\n---- Install AerooDOCS (see: https://github.com/aeroo/aeroo_docs/wiki/Installation-example-for-Ubuntu-14.04-LTS for original post): ----"
 
 sudo apt-get install python3-pip -y
@@ -59,11 +47,11 @@ sudo service aeroo-docs start
 # [ ! ]  If you encounter and error "Unable to lock on the pidfile while trying #16 just restart your server (sudo shutdown -r now)                         and try #16 again after reboot.
 
 # Install Odoo from Source:
-echo -e "\n---- Install Odoo from Source ----"
+# echo -e "\n---- Install Odoo from Source ----"
 
-cd /tmp
-sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
-sudo sh odoo_install.sh
+# cd /tmp
+# sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
+# sudo sh odoo_install.sh
 
 # restart the server (sudo shutdown -r now)
 
