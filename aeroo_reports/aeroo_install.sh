@@ -6,7 +6,7 @@
 #               General Contact <odoocommunitywidgets@gmail.com>
 #
 # WARNING: This script as such is intended to be used by professional
-# programmers who take the whole responsibility of assessing all potential
+# programmers/sysadmins who take the whole responsibility of assessing all potential
 # consequences resulting from its eventual inadequacies and bugs
 # End users who are looking for a ready-to-use solution with commercial
 # guarantees and support are strongly advised to contract a Free Software
@@ -40,7 +40,8 @@ sudo apt-get install git -y
 
 # Install AerooLib:
 echo -e "\n---- Install AerooLib ----"
-sudo apt-get install python-setuptools python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-base python-cups python3-pip -yf
+sudo apt-get install python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-base python-cups -y
+sudo apt-get install python-setuptools python3-pip -yf
 sudo mkdir /opt/aeroo
 cd /opt/aeroo
 sudo git clone https://github.com/aeroo/aeroolib.git
@@ -70,6 +71,8 @@ sudo update-rc.d office defaults
 # Install AerooDOCS
 echo -e "\n---- Install AerooDOCS (see: https://github.com/aeroo/aeroo_docs/wiki/Installation-example-for-Ubuntu-14.04-LTS for original post): ----"
 
+sudo pip3 install jsonrpc2 daemonize
+
 echo -e "\n---- create conf file for AerooDOCS ----"
 sudo touch /etc/aeroo-docs.conf
 sudo su root -c "echo '[start]' >> /etc/aeroo-docs.conf"
@@ -85,7 +88,6 @@ sudo su root -c "echo '[simple-auth]' >> /etc/aeroo-docs.conf"
 sudo su root -c "echo 'username = anonymous' >> /etc/aeroo-docs.conf"
 sudo su root -c "echo 'password = anonymous' >> /etc/aeroo-docs.conf"
 
-sudo pip3 install jsonrpc2 daemonize
 cd /opt/aeroo
 sudo git clone https://github.com/aeroo/aeroo_docs.git
 sudo touch /etc/init.d/office
@@ -100,7 +102,7 @@ sudo service aeroo-docs restart
 echo -e "\n---- Install Odoo 8 from Source (Github) ----"
 
 while true; do
-    read -p "Would you like to install Odoo 8?" yn
+    read -p "Would you like to install Odoo 8 (y/n)?" yn
     case $yn in
         [Yy]* ) sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/8.0/odoo-saas4/ubuntu-14-04/odoo_install.sh
         sudo sh odoo_install.sh
@@ -118,7 +120,7 @@ done
 echo -e "\n---- Install Aeroo Reports Odoo Modules: ----"
 
 while true; do
-    read -p "Would you like to install Aeroo Reports Odoo modules for Odoo 8?" yn
+    read -p "Would you like to install Aeroo Reports Odoo modules for Odoo 8 (y/n)?" yn
     case $yn in
         [Yy]* ) cd /opt/odoo/custom
         sudo git clone -b master https://github.com/aeroo/aeroo_reports.git
