@@ -30,6 +30,10 @@
 # DESCRIPTION: This script is designed to install all the dependencies for the aeroo-reports modules from Alistek.
 # It also gives you the option of installing Odoo while you're running the script. If you don't want this just choose no when given the option.
 
+# apt-get update
+sudo aptitude update && sudo aptitude full-upgrade -y
+sudo apt-get build-dep build-essential -y
+
 # Install Git:
 echo -e "\n---- Install Git ----"
 sudo apt-get install git -y
