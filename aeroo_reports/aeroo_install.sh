@@ -109,15 +109,36 @@ sudo service aeroo-docs restart
 # If you encounter and error "Unable to lock on the pidfile while trying #16 just restart the service (sudo service aeroo-docs restart).
 
 # Install Odoo from Source
-# echo -e "\n---- Install Odoo from Source ----"
+echo -e "\n---- Install Odoo 8 from Source (Github) ----"
+
+while true; do
+    read -p "Would you like to install Odoo 8?" yn
+    case $yn in
+        [Yy]* ) sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
+        sudo sh odoo_install.sh;;
+        [Nn]* ) ;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 # cd /tmp
 # sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
 # sudo sh odoo_install.sh
 
 # Install Aeroo Reports:
-echo -e "\n---- Install Aeroo Reports: ----"
-cd /opt/odoo/custom
-sudo git clone -b master https://github.com/aeroo/aeroo_reports.git
+echo -e "\n---- Install Aeroo Reports Odoo Modules: ----"
+
+while true; do
+    read -p "Would you like to install Aeroo Reports Odoo modules for Odoo 8?" yn
+    case $yn in
+        [Yy]* ) cd /opt/odoo/custom
+        sudo git clone -b master https://github.com/aeroo/aeroo_reports.git;;
+        [Nn]* ) ;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+# cd /opt/odoo/custom
+# sudo git clone -b master https://github.com/aeroo/aeroo_reports.git
 
 echo -e "\n---- restart the server (sudo shutdown -r now) ----"
