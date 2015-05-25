@@ -116,7 +116,7 @@ while true; do
     case $yn in
         [Yy]* ) sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/8.0/odoo-saas4/ubuntu-14-04/odoo_install.sh
         sudo sh odoo_install.sh;;
-        [Nn]* ) ;;
+        [Nn]* ) return;;
         * ) echo "Please answer yes or no.";;
     esac
 done
@@ -133,7 +133,7 @@ while true; do
     case $yn in
         [Yy]* ) cd /opt/odoo/custom
         sudo git clone -b master https://github.com/aeroo/aeroo_reports.git;;
-        [Nn]* ) ;;
+        [Nn]* ) return;;
         * ) echo "Please answer yes or no.";;
     esac
 done
