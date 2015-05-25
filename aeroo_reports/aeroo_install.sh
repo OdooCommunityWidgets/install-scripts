@@ -9,7 +9,7 @@
 # programmers who take the whole responsability of assessing all potential
 # consequences resulting from its eventual inadequacies and bugs
 # End users who are looking for a ready-to-use solution with commercial
-# guarantees and support are strongly adviced to contract a Free Software
+# guarantees and support are strongly advised to contract a Free Software
 # Service Company
 #
 # This script is Free Software; you can redistribute it and/or
@@ -27,10 +27,8 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ################################################################################
-# DESCRIPTION: This script is designed to install all the dependencies for the aeroo-reports modules from Alistek. 
-# If you'd like to install Odoo along with it simply uncomment lines 108-113. Otherwise it assumes you already have Odoo
-# installed according to the script here: 
-# https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
+# DESCRIPTION: This script is designed to install all the dependencies for the aeroo-reports modules from Alistek.
+# It also gives you the option of installing Odoo while you're running the script. If you don't want this just choose no when given the option.
 
 # Install Git:
 echo -e "\n---- Install Git ----"
