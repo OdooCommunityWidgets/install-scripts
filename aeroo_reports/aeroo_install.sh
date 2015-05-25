@@ -114,7 +114,7 @@ echo -e "\n---- Install Odoo 8 from Source (Github) ----"
 while true; do
     read -p "Would you like to install Odoo 8?" yn
     case $yn in
-        [Yy]* ) sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
+        [Yy]* ) sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/8.0/odoo-saas4/ubuntu-14-04/odoo_install.sh
         sudo sh odoo_install.sh;;
         [Nn]* ) ;;
         * ) echo "Please answer yes or no.";;
@@ -122,7 +122,7 @@ while true; do
 done
 
 # cd /tmp
-# sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
+# sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/8.0/odoo-saas4/ubuntu-14-04/odoo_install.sh
 # sudo sh odoo_install.sh
 
 # Install Aeroo Reports:
