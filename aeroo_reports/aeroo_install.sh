@@ -115,7 +115,8 @@ while true; do
     read -p "Would you like to install Odoo 8?" yn
     case $yn in
         [Yy]* ) sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/8.0/odoo-saas4/ubuntu-14-04/odoo_install.sh
-        sudo sh odoo_install.sh;;
+        sudo sh odoo_install.sh
+        break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -132,7 +133,8 @@ while true; do
     read -p "Would you like to install Aeroo Reports Odoo modules for Odoo 8?" yn
     case $yn in
         [Yy]* ) cd /opt/odoo/custom
-        sudo git clone -b master https://github.com/aeroo/aeroo_reports.git;;
+        sudo git clone -b master https://github.com/aeroo/aeroo_reports.git
+        break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
