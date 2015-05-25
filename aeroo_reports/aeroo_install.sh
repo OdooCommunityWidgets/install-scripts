@@ -34,6 +34,34 @@ sudo update-rc.d office defaults
 # Install AerooDOCS
 echo -e "\n---- Install AerooDOCS (see: https://github.com/aeroo/aeroo_docs/wiki/Installation-example-for-Ubuntu-14.04-LTS for original post): ----"
 
+[start]
+interface = localhost
+port = 8989
+oo-server = localhost
+oo-port = 8100
+spool-directory = /tmp/aeroo-docs
+spool-expire = 1800
+log-file = /var/log/aeroo-docs/aeroo_docs.log
+pid-file = /tmp/aeroo-docs.pid
+[simple-auth]
+username = anonymous
+password = anonymous
+
+echo -e "\n---- create conf file for AerooDOCS ----"
+sudo touch /etc/aeroo-docs.conf
+sudo su root -c "echo '[start]' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'interface = localhost' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'port = 8989' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'oo-server = localhost' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'oo-port = 8100' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'spool-directory = /tmp/aeroo-docs' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'spool-expire = 1800' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'log-file = /var/log/aeroo-docs/aeroo_docs.log' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'pid-file = /tmp/aeroo-docs.pid' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo '[simple-auth]' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'username = anonymous' >> /etc/aeroo-docs.conf"
+sudo su root -c "echo 'password = anonymous' >> /etc/aeroo-docs.conf"
+
 sudo apt-get install python3-pip -y
 sudo pip3 install jsonrpc2 daemonize
 cd /opt/aeroo
@@ -47,11 +75,11 @@ sudo service aeroo-docs start
 # If you encounter and error "Unable to lock on the pidfile while trying #16 just restart your server (sudo shutdown -r now)                         and try #16 again after reboot.
 
 # Install Odoo from Source
-echo -e "\n---- Install Odoo from Source ----"
+# echo -e "\n---- Install Odoo from Source ----"
 
-cd /tmp
-sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
-sudo sh odoo_install.sh
+# cd /tmp
+# sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/master/odoo-saas4/ubuntu-14-04/odoo_install.sh
+# sudo sh odoo_install.sh
 
 # Install Aeroo Reports:
 echo -e "\n---- Install Aeroo Reports: ----"
