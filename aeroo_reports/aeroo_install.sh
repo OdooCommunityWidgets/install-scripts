@@ -40,7 +40,7 @@ sudo apt-get install git -y
 
 # Install AerooLib:
 echo -e "\n---- Install AerooLib ----"
-sudo apt-get install python-setuptools python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-base python-cups python3-pip -y
+sudo apt-get install python-setuptools python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-base python-cups python3-pip -yf
 sudo mkdir /opt/aeroo
 cd /opt/aeroo
 sudo git clone https://github.com/aeroo/aeroolib.git
