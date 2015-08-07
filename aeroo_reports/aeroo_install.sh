@@ -133,5 +133,14 @@ done
 
 # cd /opt/odoo/custom
 # sudo git clone -b master https://github.com/aeroo/aeroo_reports.git
-
+echo -e "\n >>>>>>>>>> PLEASE RESTART YOUR SERVER TO FINALISE THE INSTALLATION (See below for the command you should use) <<<<<<<<<<"
 echo -e "\n---- restart the server (sudo shutdown -r now) ----"
+while true; do
+    read -p "Would you like to restart your server now (y/n)?" yn
+    case $yn in
+        [Yy]* ) sudo shutdown -r now
+        break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
